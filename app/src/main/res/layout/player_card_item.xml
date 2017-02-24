@@ -26,13 +26,13 @@
                 android:id="@+id/playerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:textSize="@dimen/title_text_size"
+                android:textSize="20sp"
                 android:gravity="center"/>
             <TextView
                 android:id="@+id/playerArtist"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:textSize="@dimen/artist_text_size"
+                android:textSize="20sp"
                 android:gravity="center"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>

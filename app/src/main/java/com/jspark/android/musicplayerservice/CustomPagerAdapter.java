@@ -1,6 +1,7 @@
 package com.jspark.android.musicplayerservice;
 
 import android.content.Context;
+import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by jsPark on 2017. 2. 2..
  */
 
-public class CustomPagerAdapter extends android.support.v4.view.PagerAdapter {
+public class CustomPagerAdapter extends PagerAdapter {
 
     List<Music> music;
     Context context;
