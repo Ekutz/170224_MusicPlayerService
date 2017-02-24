@@ -26,11 +26,10 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.Holder> {
     Context context;
     Intent i = null;
 
-
     public MusicAdapter(Context context) {
         this.data = DataLoader.load(context);
         this.context = context;
-        i = new Intent(context, PlayActivity.class);
+        i = new Intent(context, PlayerActivity.class);
     }
 
     @Override

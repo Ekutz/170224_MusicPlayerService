@@ -5,7 +5,7 @@
     android:id="@+id/activity_play"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jspark.android.musicplayerservice.PlayActivity">
+    tools:context="com.jspark.android.musicplayerservice.PlayerActivity">
 
 
     <android.support.constraint.ConstraintLayout

@@ -14,23 +14,24 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static com.jspark.android.musicplayerservice.App.PAUSE;
+import static com.jspark.android.musicplayerservice.App.PLAY;
+import static com.jspark.android.musicplayerservice.App.STOP;
 import static com.jspark.android.musicplayerservice.App.audio;
+import static com.jspark.android.musicplayerservice.App.playStatus;
+import static com.jspark.android.musicplayerservice.App.position;
 
-public class PlayActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity {
 
     List<Music> music;
     ViewPager vp;
 
     ImageButton btnRew, btnPlay, btnFF;
-    int position = 0;
+
     SeekBar sbar;
     TextView duration, time;
 
-    private static final int PLAY = 0;
-    private static final int PAUSE = 1;
-    private static final int STOP = 2;
 
-    private static int playStatus = STOP;
 
     private class Timer extends Thread {
 
@@ -110,7 +111,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void setViewPager() {
-        CustomPagerAdapter adapter = new CustomPagerAdapter(music, PlayActivity.this);
+        CustomPagerAdapter adapter = new CustomPagerAdapter(music, PlayerActivity.this);
 
         vp.setAdapter(adapter);
 
@@ -127,7 +128,7 @@ public class PlayActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            PlayActivity.this.position = position;
+            App.position = position;
             init();
             playerInit();
             controllerInit();
@@ -197,34 +198,28 @@ public class PlayActivity extends AppCompatActivity {
     private void play() {
         switch(playStatus) {
             case STOP :
-                playStop();
+                playStart();
                 break;
             case PLAY :
-                playPlay();
+                playPause();
                 break;
             case PAUSE :
-                playPause();
+                playRestart();
                 break;
         }
     }
 
-    private void playStop() {
-        audio.start();
+    private void playStart() {
         btnPlay.setImageResource(android.R.drawable.ic_media_pause);
-        playStatus=PLAY;
         Thread thread = new Timer();
         thread.start();
     }
 
-    private void playPlay() {
-        audio.pause();
-        playStatus = PAUSE;
+    private void playPause() {
         btnPlay.setImageResource(android.R.drawable.ic_media_play);
     }
 
-    private void playPause() {
-        audio.start();
-        playStatus = PLAY;
+    private void playRestart() {
         btnPlay.setImageResource(android.R.drawable.ic_media_pause);
     }
 
